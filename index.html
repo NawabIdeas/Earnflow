@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarnFlow - Choose Your Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .panel-selector {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .selector-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 600px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        .app-logo {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .app-tagline {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .panel-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .panel-option {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .panel-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+        
+        .panel-option.admin {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        }
+        
+        .panel-option.admin:hover {
+            box-shadow: 0 15px 35px rgba(44, 62, 80, 0.4);
+        }
+        
+        .panel-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .panel-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .panel-description {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .features {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .features h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #555;
+        }
+        
+        .feature-icon {
+            color: #667eea;
+            font-size: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .panel-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .app-logo {
+                font-size: 36px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="panel-selector">
+        <div class="selector-card">
+            <div class="app-logo">💰 EarnFlow</div>
+            <div class="app-tagline">Choose your access panel to get started</div>
+            
+            <div class="panel-options">
+                <a href="user.html" class="panel-option">
+                    <i class="fas fa-user panel-icon"></i>
+                    <div class="panel-title">User Panel</div>
+                    <div class="panel-description">Watch ads, complete tasks, and earn money</div>
+                </a>
+                
+                <a href="admin.html" class="panel-option admin">
+                    <i class="fas fa-cog panel-icon"></i>
+                    <div class="panel-title">Admin Panel</div>
+                    <div class="panel-description">Manage users, requests, and system settings</div>
+                </a>
+            </div>
+            
+            <div class="features">
+                <h3>Platform Features</h3>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-video feature-icon"></i>
+                        <span>Watch Ads & Earn</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-link feature-icon"></i>
+                        <span>Shortlink Tasks</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-coins feature-icon"></i>
+                        <span>Faucet Rewards</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-users feature-icon"></i>
+                        <span>Referral System</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-calendar-check feature-icon"></i>
+                        <span>Daily Check-in</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-trophy feature-icon"></i>
+                        <span>Leaderboards</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-credit-card feature-icon"></i>
+                        <span>Multiple Payment Methods</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt feature-icon"></i>
+                        <span>Secure Transactions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
