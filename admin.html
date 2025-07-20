@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarnFlow - Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-storage-compat.js"></script>
+</head>
+<body>
+    <!-- Auth Container -->
+    <div id="authContainer" class="auth-container">
+        <div class="auth-card">
+            <h2 class="auth-title">Admin Login</h2>
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" id="adminEmail" class="form-control" placeholder="Enter admin email">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Password</label>
+                <input type="password" id="adminPassword" class="form-control" placeholder="Enter admin password">
+            </div>
+            <button onclick="adminLogin()" class="btn btn-primary w-100">Login as Admin</button>
+        </div>
+    </div>
+
+    <!-- Main Admin Container -->
+    <div id="adminContainer" class="hidden">
+        <!-- Header -->
+        <header class="header admin-header">
+            <button class="menu-btn" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h1 class="app-name">EarnFlow Admin</h1>
+            <button class="profile-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </header>
+
+        <!-- Navigation Menu -->
+        <nav id="navMenu" class="nav-menu">
+            <div class="nav-header">
+                <h3>Admin Menu</h3>
+            </div>
+            <a href="#" class="nav-item" onclick="showAdminDashboard(); closeMenu();">
+                <i class="fas fa-tachometer-alt"></i> Dashboard
+            </a>
+            <a href="#" class="nav-item" onclick="showRequests(); closeMenu();">
+                <i class="fas fa-clipboard-list"></i> Requests
+            </a>
+            <a href="#" class="nav-item" onclick="showWatchAdsManager(); closeMenu();">
+                <i class="fas fa-video"></i> Watch Ads
+            </a>
+            <a href="#" class="nav-item" onclick="showShortlinkManager(); closeMenu();">
+                <i class="fas fa-link"></i> Shortlink
+            </a>
+            <a href="#" class="nav-item" onclick="showFaucetAdsManager(); closeMenu();">
+                <i class="fas fa-coins"></i> Faucet Ads
+            </a>
+            <a href="#" class="nav-item" onclick="showDailyCheckManager(); closeMenu();">
+                <i class="fas fa-calendar-check"></i> Daily Checking
+            </a>
+            <a href="#" class="nav-item" onclick="showRedeemCodeManager(); closeMenu();">
+                <i class="fas fa-gift"></i> Redeem Code
+            </a>
+            <a href="#" class="nav-item" onclick="showContactManager(); closeMenu();">
+                <i class="fas fa-comments"></i> Contact
+            </a>
+            <a href="#" class="nav-item" onclick="showSettings(); closeMenu();">
+                <i class="fas fa-cog"></i> Settings
+            </a>
+            <a href="#" class="nav-item" onclick="showPaymentMethods(); closeMenu();">
+                <i class="fas fa-credit-card"></i> Payment Methods
+            </a>
+        </nav>
+        <div id="navOverlay" class="nav-overlay" onclick="closeMenu()"></div>
+
+        <!-- Main Content -->
+        <div class="container">
+            <!-- Dashboard -->
+            <div id="adminDashboardView" class="view">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalRevenue">$0.00</div>
+                        <div class="stat-label">Total Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="dailyRevenue">$0.00</div>
+                        <div class="stat-label">Daily Revenue</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="pendingRequests">0</div>
+                        <div class="stat-label">Pending Requests</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Users</h3>
+                        <button class="btn btn-primary" onclick="resetDailyRevenue()">Reset Daily Revenue</button>
+                    </div>
+                    <div id="usersList">
+                        <!-- Users list will be loaded here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div id="contentArea"></div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Modal Title</h3>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody">
+                <!-- Modal content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="firebase-config.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
